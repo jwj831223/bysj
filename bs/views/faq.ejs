@@ -1,0 +1,140 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Knowledge Base Theme</title>
+
+    <link rel="shortcut icon" href="images/favicon.png" />
+
+
+
+
+    <!-- Style Sheet-->
+    <link rel="stylesheet" href="style.css" />
+    <link rel='stylesheet' id='bootstrap-css-css' href='css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='responsive-css-css' href='css/responsive5152.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='pretty-photo-css-css' href='js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='main-css-css' href='css/main5152.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='custom-css-css' href='css/custom5152.html?ver=1.0' type='text/css' media='all' />
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+                <script src="js/html5.js"></script></script>
+                <![endif]-->
+
+</head>
+
+<body>
+
+    <% include header.ejs%>
+
+    <!-- Start of Page Container -->
+    <div class="page-container">
+        <div class="container">
+            <div class="row">
+
+                <!-- start of page content -->
+                <div class="span8 page-content">
+
+                    <article class="type-page hentry clearfix">
+                        <h1 class="post-title">
+                            <a href="#">发帖交流</a>
+                        </h1>
+                        <hr>
+                        <p>如果你有什么想跟大家交流的，那就发帖吧！</p>
+                    </article>
+
+
+                    <form id="contact-form" class="row" action="http://inspirythemes.com/templates/knowledgebase-html/contact_form_handler.php" method="post">
+
+                        <div class="span2">
+                            <label for="name">文章主题 <span>*</span> </label>
+                        </div>
+                        <div class="span6">
+                            <input type="text" name="name" id="name" class="required input-xlarge" value="" title="* Please provide your name">
+                        </div>
+
+
+                        <div class="span2">
+                            <label for="reason">类别 </label>
+                        </div>
+                        <div class="span6">
+                            <input type="text" name="reason" id="reason" class="input-xlarge" value="">
+                        </div>
+
+                        <div class="span2">
+                            <label for="message">内容 <span>*</span> </label>
+                        </div>
+                        <div class="span6">
+                            <textarea name="message" id="message" class="required span6" rows="6" title="* 请输入帖子内容"></textarea>
+                        </div>
+
+                        <div class="span6 offset2 bm30">
+                            <input type="submit" name="submit" value="Send Message" class="btn btn-inverse">
+                            <img src="images/loading.gif" id="contact-loader" alt="Loading...">
+                        </div>
+
+                        <div class="span6 offset2 error-container"></div>
+                        <div class="span8 offset2" id="message-sent"></div>
+
+                    </form>
+                </div>
+                <!-- end of page content -->
+
+
+                <!-- start of sidebar -->
+                <aside class="span4 page-sidebar">
+
+
+                    <section class="widget">
+                        <h3 class="title">特色论文</h3>
+                        <ul class="articles">
+                            <li class="article-entry standard">
+                                <h4><a href="single.html">题目题目题目</a></h4>
+                                <span class="article-meta">25 9, 2016  <a href="#" title="View all posts in Server &amp; Database">类别类别</a></span>
+                                <span class="like-count">66</span>
+                            </li>
+                            <li class="article-entry standard">
+                                <h4><a href="single.html">题目题目题目</a></h4>
+                                <span class="article-meta">25 9, 2016  <a href="#" title="View all posts in Server &amp; Database">类别类别</a></span>
+                                <span class="like-count">66</span>
+                            </li>
+                            <li class="article-entry standard">
+                                <h4><a href="single.html">题目题目题目</a></h4>
+                                <span class="article-meta">25 9, 2016  <a href="#" title="View all posts in Server &amp; Database">类别类别</a></span>
+                                <span class="like-count">66</span>
+                            </li>
+                            <li class="article-entry standard">
+                                <h4><a href="single.html">题目题目题目</a></h4>
+                                <span class="article-meta">25 9, 2016  <a href="#" title="View all posts in Server &amp; Database">类别类别</a></span>
+                                <span class="like-count">66</span>
+                            </li>
+                        </ul>
+                    </section>
+
+
+                </aside>
+                <!-- end of sidebar -->
+            </div>
+        </div>
+    </div>
+    <!-- End of Page Container -->
+
+
+
+    <a href="#top" id="scroll-top"></a>
+
+  
+</body>
+
+</html>
