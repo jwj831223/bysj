@@ -6,10 +6,12 @@ var session = require("express-session");
 var app = express();
 
 app.use(session({
-    secret: 'keyboard cat',
+    secret: 'ilue igauto',
+    cookie: { maxAge: null },
+    rolling: true,
     resave: false,
-    saveUninitialized: true,
-}))
+    saveUninitialized: true
+}));
 
 
 app.set("view engine", "ejs"); //使用ejs模板引擎

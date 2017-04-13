@@ -1,4 +1,6 @@
 $(function() {
+
+
     $("#switch_qlogin").click(function() {
         $(this).css({ "color": "black" });
         $(this).siblings().css({ "color": "#999" });
