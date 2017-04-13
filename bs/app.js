@@ -13,5 +13,6 @@ app.get("/", router.index);
 app.get("/articles", router.articles);
 app.get("/faq", router.faq);
 app.get("/contact", router.contact);
+app.get("/register_login", router.register_login);
 
 app.listen(3000);

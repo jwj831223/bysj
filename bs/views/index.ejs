@@ -13,12 +13,10 @@
 
     <title>Knowledge Base Theme</title>
 
-    <link rel="shortcut icon" href="images/favicon.png" />
     <!-- Style Sheet-->
     <link rel='stylesheet' id='bootstrap-css-css' href='css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='responsive-css-css' href='css/responsive5152.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='main-css-css' href='css/main5152.css?ver=1.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='custom-css-css' href='css/custom5152.html?ver=1.0' type='text/css' media='all' />
 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -26,7 +24,8 @@
                 <script src="js/html5.js"></script></script>
                 <![endif]-->
 
-
+    <script type="text/javascript" src="js/jquery.js"></script>            
+    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/underscore.js"></script>
 </head>
 
@@ -61,21 +60,14 @@
                     <div class="row separator">
                         <section class="span4 articles-list">
                             <h3>Featured Articles</h3>
-                            <ul class="articles">
-                            <% for(var i=0;i<5;++i) {  %>
-                                <li class="article-entry standard">
-                                    <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
-                                    <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                                    <span class="like-count">66</span>
-                                </li>
-                                <% } %>
+                            <ul class="articles featured">
                             </ul>     
                         </section>
 
 
                         <section class="span4 articles-list">
                             <h3>Latest Articles</h3>
-                            <ul class="articles">
+                            <ul class="articles Latest">
                                 <% for(var i=0;i<5;++i) {  %>
                                 <li class="article-entry standard">
                                     <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
@@ -182,17 +174,6 @@
                                 <li>No Tweets loaded !</li>
                             </ul>
                         </div>
-                        <script src="http://twitterjs.googlecode.com/svn/trunk/src/twitter.min.js" type="text/javascript"></script>
-                        <script type="text/javascript">
-                            getTwitters("twitter_update_list", {
-                                id: "960development",
-                                count: 3,
-                                enableLinks: true,
-                                ignoreReplies: true,
-                                clearContents: true,
-                                template: "%text% <span>%time%</span>"
-                            });
-                        </script>
                     </section>
                 </div>
 

@@ -10,3 +10,6 @@ exports.contact = function(req, res) {
 exports.faq = function(req, res) {
     res.render("faq");
 }
+exports.register_login = function(req, res) {
+    res.render("register_login");
+}
