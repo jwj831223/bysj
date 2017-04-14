@@ -61,7 +61,7 @@
                             <label for="name">文章主题 <span>*</span> </label>
                         </div>
                         <div class="span6">
-                            <input type="text" name="name" id="name" class="required input-xlarge" value="" title="* Please provide your name">
+                            <input type="text" name="name" id="name" class="required input-xlarge" value="" title="* Please provide your name"disabled="disabled">
                         </div>
 
 
@@ -69,19 +69,24 @@
                             <label for="reason">类别 </label>
                         </div>
                         <div class="span6">
-                            <input type="text" name="reason" id="reason" class="input-xlarge" value="">
+                            <input type="text" name="reason" id="reason" class="input-xlarge" value=""disabled="disabled">
                         </div>
 
-                        <div class="span2">
+                        <div class="span2" style="position:relative">
                             <label for="message">内容 <span>*</span> </label>
+                            <%if(login!="1"){%>
+                                <input type="button" name="submit" value="登录" class="btn btn-inverse" id="doLogin" style="background:blue;position:absolute;top: 356%;left:41%">
+                            <%}%>
                         </div>
                         <div class="span6">
-                            <textarea name="message" id="message" class="required span6" rows="6" title="* 请输入帖子内容"></textarea>
+                            <textarea name="message" id="message" class="required span6" rows="6" title="* 请输入帖子内容" disabled="disabled"></textarea>
                         </div>
 
                         <div class="span6 offset2 bm30">
-                            <input type="submit" name="submit" value="Send Message" class="btn btn-inverse">
-                            <img src="images/loading.gif" id="contact-loader" alt="Loading...">
+                            <%if(login=="1"){%>
+                                <input type="button" name="submit" value="发表" class="btn btn-inverse"  style="background:green">
+                            <%}%>
+
                         </div>
 
                         <div class="span6 offset2 error-container"></div>

@@ -17,14 +17,14 @@
                 <nav class="main-nav">
                     <div class="menu-top-menu-container">
                         <ul id="menu-top-menu" class="clearfix">
-                            <li><a href="/">首页</a></li>
-                            <li class="current-menu-item"><a href="/articles">文章列表</a></li>
-                            <li><a href="/faq">常见问题解答</a></li>
-                            <li><a href="/contact">发帖交流</a></li>
+                            <li id="<%if(present_active=='index'){%>current-menu-item<%}%>"><a href="/">首页</a></li>
+                            <li id="<%if(present_active=='articles'){%>current-menu-item<%}%>"><a href="/articles">文章列表</a></li>
+                            <li id="<%if(present_active=='faq'){%>current-menu-item<%}%>"><a href="/faq">常见问题解答</a></li>
+                            <li id="<%if(present_active=='contact'){%>current-menu-item<%}%>"><a href="/contact">发帖交流</a></li>
                             <% if(login != "1"){%>
-                                <li><a href="/register_login">注册/登录</a></li>
+                                <li id="<%if(present_active=='register_login'){%>current-menu-item<%}%>"><a href="/register_login">注册/登录</a></li>
                             <%} else{%>
-                                <li><a href="/">欢迎 <%= username%></a></li>
+                                <li> <a>欢迎：</a><a> <%= username%></a></li>
                                 <li id="drop"><a style="cursor: pointer">退出</a></li>
                             <%}%>
                         </ul>
@@ -47,3 +47,9 @@
             })
         })
     </script>
+
+    <style>
+        #current-menu-item a{
+            color:#fff;
+        }
+    </style>

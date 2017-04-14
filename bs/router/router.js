@@ -15,7 +15,7 @@ exports.articles = function(req, res) {
     res.render("articles-list", {
         "login": req.session.login ? "1" : null,
         "username": req.session.username ? req.session.username : null,
-        "present_active": "articles-list"
+        "present_active": "articles"
 
     });
 }
