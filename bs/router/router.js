@@ -7,32 +7,37 @@ var User = require("../models/users.js"); //用户信息相关
 exports.index = function(req, res) {
     res.render("index", {
         "login": req.session.login ? "1" : null,
-        "username": req.session.username ? req.session.username : null
+        "username": req.session.username ? req.session.username : null,
+        "present_active": "index"
     });
 }
 exports.articles = function(req, res) {
     res.render("articles-list", {
         "login": req.session.login ? "1" : null,
-        "username": req.session.username ? req.session.username : null
+        "username": req.session.username ? req.session.username : null,
+        "present_active": "articles-list"
 
     });
 }
 exports.contact = function(req, res) {
     res.render("contact", {
         "login": req.session.login ? "1" : null,
-        "username": req.session.username ? req.session.username : null
+        "username": req.session.username ? req.session.username : null,
+        "present_active": "contact"
     });
 }
 exports.faq = function(req, res) {
     res.render("faq", {
         "login": req.session.login ? "1" : null,
-        "username": req.session.username ? req.session.username : null
+        "username": req.session.username ? req.session.username : null,
+        "present_active": "faq"
     });
 }
 exports.register_login = function(req, res) {
     res.render("register_login", {
         "login": req.session.login ? "1" : null,
-        "username": req.session.username ? req.session.username : null
+        "username": req.session.username ? req.session.username : null,
+        "present_active": "register_login"
     });
 }
 
