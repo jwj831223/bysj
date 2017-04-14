@@ -21,7 +21,12 @@
                             <li class="current-menu-item"><a href="/articles">文章列表</a></li>
                             <li><a href="/faq">常见问题解答</a></li>
                             <li><a href="/contact">发帖交流</a></li>
-                            <li><a href="/register_login">登录</a></li>
+                            <% if(login != "1"){%>
+                                <li><a href="/register_login">注册/登录</a></li>
+                            <%} else{%>
+                                <li><a href="/">欢迎 <%= username%></a></li>
+                                <li id="drop"><a style="cursor: pointer">退出</a></li>
+                            <%}%>
                         </ul>
                     </div>
                 </nav>
@@ -31,3 +36,14 @@
         </header>
     </div>
     <!-- End of Header -->
+
+    <!-- 退出业务 -->
+    <script type="text/javascript">
+        $("#drop").click(function(){
+            $.post("/doDrop",function(result){
+                if(result=="1"){
+                    location.href = "/register_login";
+                }
+            })
+        })
+    </script>
