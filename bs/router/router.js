@@ -125,7 +125,7 @@ exports.doPublish = function(req, res) {
         var category = fields.category;
         var message = fields.message;
 
-        var invitation = new Invitation({ "username": req.session.username, "tittle": tittle, "category": category, "message": message, "date": new Date() });
+        var invitation = new Invitation({ "username": req.session.username, "tittle": tittle, "category": category, "message": message, "date": (new Date()).valueOf() });
         invitation.save(function(err) {
             if (err) {
                 res.send("-1");
@@ -135,4 +135,26 @@ exports.doPublish = function(req, res) {
             }
         })
     });
+}
+
+
+//帖子详情页
+exports.single = function(req, res) {
+    res.render("single", {
+        "login": req.session.login ? "1" : null,
+        "username": req.session.username ? req.session.username : null,
+        "present_active": ""
+    });
+}
+
+//获取帖子列表
+exports.findPublish = function(req, res) {
+    Invitation.find({}, function(err, result) {
+        if (err) {
+            res.send('-1');
+            return;
+        } else {
+            res.json({ "invitation": result });
+        }
+    })
 }
