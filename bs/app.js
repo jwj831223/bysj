@@ -8,7 +8,7 @@ var app = express();
 //设置session的相关配置
 app.use(session({
     secret: 'ilue igauto',
-    cookie: { maxAge: 180000 },
+    cookie: { maxAge: 1800000 },
     rolling: true,
     resave: false,
     saveUninitialized: true
@@ -28,5 +28,6 @@ app.get("/register_login", router.register_login); //显示登录注册页面
 app.post("/doLogin", router.doLogin); //登录业务
 app.post("/doRegister", router.doRegister); //注册业务
 app.post("/doDrop", router.doDrop); //退出业务
+app.post("/doPublish", router.doPublish); //帖子发表业务
 
 app.listen(3000);

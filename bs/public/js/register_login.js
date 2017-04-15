@@ -31,7 +31,7 @@ $(function() {
         $.post("/doLogin", { "username": username, "password": password }, function(result) {
             if (result == "1") {
                 //登录成功
-                location.href = "/";
+                location.href = sessionStorage.getItem("address") || "/";
             } else if (result == "-1") {
                 //用户名或密码错误
                 $("#login_danger").html("用户名或密码错误");
@@ -90,7 +90,7 @@ $(function() {
         $.post("/doRegister", { "username": username, "password": password }, function(result) {
             if (result == "1") {
                 // 注册成功
-                location.href = "/";
+                location.href = sessionStorage.getItem("address") || "/";
             } else if (result == "-1") {
                 //用户名已存在
                 $("#register_danger").html("用户名已存在");

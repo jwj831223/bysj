@@ -12,21 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Knowledge Base Theme</title>
-    <script type="text/javascript" src="/js/jquery.js"></script>
     <link rel="shortcut icon" href="images/favicon.png" />
-
-
-
-
     <!-- Style Sheet-->
-    <link rel="stylesheet" href="style.css" />
     <link rel='stylesheet' id='bootstrap-css-css' href='css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='responsive-css-css' href='css/responsive5152.css?ver=1.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='pretty-photo-css-css' href='js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4' type='text/css' media='all' />
     <link rel='stylesheet' id='main-css-css' href='css/main5152.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='custom-css-css' href='css/custom5152.html?ver=1.0' type='text/css' media='all' />
 
-
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/contact.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
                 <script src="js/html5.js"></script></script>
@@ -61,36 +56,41 @@
                             <label for="name">文章主题 <span>*</span> </label>
                         </div>
                         <div class="span6">
-                            <input type="text" name="name" id="name" class="required input-xlarge" value="" title="* Please provide your name"disabled="disabled">
+                            <input type="text" name="name" id="tittle" class="required input-xlarge" value="" title="* Please provide your name"<%if(login!="1"){%>disabled="disabled"<%}%>>
                         </div>
 
 
                         <div class="span2">
-                            <label for="reason">类别 </label>
+                            <label for="reason">类别 <span>*</span></label>
                         </div>
                         <div class="span6">
-                            <input type="text" name="reason" id="reason" class="input-xlarge" value=""disabled="disabled">
+                            <select <%if(login!="1"){%>disabled="disabled"<%}%> id="category">
+                                <option value="0">请选择</option>
+                                <option value="1">机械</option>
+                                <option value="2">制造</option>
+                                <option value="3">自动化</option>
+                            </select>
                         </div>
 
                         <div class="span2" style="position:relative">
                             <label for="message">内容 <span>*</span> </label>
                             <%if(login!="1"){%>
-                                <input type="button" name="submit" value="登录" class="btn btn-inverse" id="doLogin" style="background:blue;position:absolute;top: 356%;left:41%">
+                                <input type="button" name="submit" value="请登录" class="btn btn-inverse" id="doLogin" style="background:blue;position:absolute;top: 210%;left:243%">
                             <%}%>
                         </div>
                         <div class="span6">
-                            <textarea name="message" id="message" class="required span6" rows="6" title="* 请输入帖子内容" disabled="disabled"></textarea>
+                            <textarea name="message" id="message" class="required span6" rows="6" title="* 请输入帖子内容" <%if(login!="1"){%>disabled="disabled"<%}%>></textarea>
                         </div>
-
+                        <div class="span6 offset2 bm30">
+                            <div class="alert alert-danger" id="danger" role="alert" style="text-align:center;margin-bottom: 0px; display:none"></div>
+                        </div>
                         <div class="span6 offset2 bm30">
                             <%if(login=="1"){%>
-                                <input type="button" name="submit" value="发表" class="btn btn-inverse"  style="background:green">
+                                <input type="button" name="submit" value="发表" class="btn btn-inverse" id="publish" style="back-ground:green">
                             <%}%>
-
                         </div>
 
-                        <div class="span6 offset2 error-container"></div>
-                        <div class="span8 offset2" id="message-sent"></div>
+
 
                     </form>
                 </div>

@@ -42,6 +42,7 @@
         $("#drop").click(function(){
             $.post("/doDrop",function(result){
                 if(result=="1"){
+                    sessionStorage.setItem("address",""); 
                     location.href = "/register_login";
                 }
             })
