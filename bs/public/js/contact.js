@@ -51,11 +51,19 @@ $(function() {
         var message = $("#message").val();
         if (message.length > 10000) {
             $("#message").focus();
-            $("#danger").html("标题不能大于30字");
+            $("#danger").html("帖子内容不能超过10000字");
             $("#danger").fadeIn();
             return;
         }
 
         //一切正常可以进行ajax提交了
+        $.post("/doPublish", { "tittle": tittle, "category": category, "message": message }, function(result) {
+            if (result == "1") {
+                //发帖成功
+                console.log("成功");
+            } else if (result == "-1") {
+                //发帖失败
+            }
+        })
     })
 })

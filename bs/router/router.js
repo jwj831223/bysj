@@ -3,6 +3,7 @@ var formidable = require("formidable");
 var md5 = require("md5");
 
 var User = require("../models/users.js"); //用户信息相关
+var Invitation = require("../models/invitation.js"); //发帖相关
 
 exports.index = function(req, res) {
     res.render("index", {
@@ -107,8 +108,31 @@ exports.doRegister = function(req, res) {
     });
 }
 
+
+//退出业务
 exports.doDrop = function(req, res) {
     req.session.login = null;
     req.session.username = null;
     res.send("1");
+}
+
+//发帖业务
+exports.doPublish = function(req, res) {
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function(err, fields, files) {
+        var tittle = fields.tittle;
+        var category = fields.category;
+        var message = fields.message;
+
+        var invitation = new Invitation({ "username": req.session.username, "tittle": tittle, "category": category, "message": message, "date": new Date() });
+        invitation.save(function(err) {
+            if (err) {
+                res.send("-1");
+                return;
+            } else {
+                res.send("1");
+            }
+        })
+    });
 }
