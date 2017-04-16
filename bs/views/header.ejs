@@ -9,7 +9,6 @@
                     <a href="/" title="Knowledge Base Theme">
                         <img src="images/logo.png" alt="Knowledge Base Theme">
                     </a>
-                    <span class="tag-line">首页</span>
                 </div>
 
 
@@ -19,7 +18,6 @@
                         <ul id="menu-top-menu" class="clearfix">
                             <li id="<%if(present_active=='index'){%>current-menu-item<%}%>"><a href="/">首页</a></li>
                             <li id="<%if(present_active=='articles'){%>current-menu-item<%}%>"><a href="/articles">文章列表</a></li>
-                            <li id="<%if(present_active=='faq'){%>current-menu-item<%}%>"><a href="/faq">常见问题解答</a></li>
                             <li id="<%if(present_active=='contact'){%>current-menu-item<%}%>"><a href="/contact">发帖交流</a></li>
                             <% if(login != "1"){%>
                                 <li id="<%if(present_active=='register_login'){%>current-menu-item<%}%>"><a href="/register_login">注册/登录</a></li>

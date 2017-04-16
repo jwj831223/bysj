@@ -60,7 +60,7 @@ $(function() {
         $.post("/doPublish", { "tittle": tittle, "category": category, "message": message }, function(result) {
             if (result == "1") {
                 //发帖成功
-                console.log("成功");
+                location.href = "/";
             } else if (result == "-1") {
                 //发帖失败
             }

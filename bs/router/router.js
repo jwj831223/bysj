@@ -49,67 +49,67 @@ exports.doLogin = function(req, res) {
     form.parse(req, function(err, fields, files) {
         var username = fields.username;
         var password = md5(md5(fields.password) + "jjq");
-        User.find({ "username": username, "password": password }, function(err, result) {
-            if (err) {
-                res.send("-2")
-            } else {
-                var length = result.length;
-                if (0 == length) {
-                    //用户名不存在
-                    res.send("-1");
+        User.find({ "username": username, "password": password })
+            .exec(function(err, result) {
+                if (err) {
+                    res.send("-2")
                 } else {
-                    // 当登陆成功的时候需要设置session记录用户的登录状态
-                    req.session.login = "1";
-                    req.session.username = username;
-                    res.send("1");
+                    var length = result.length;
+                    if (0 == length) {
+                        //用户名不存在
+                        res.send("-1");
+                    } else {
+                        // 当登陆成功的时候需要设置session记录用户的登录状态
+                        req.session.login = "1";
+                        req.session.username = username;
+                        res.send("1");
+                    }
                 }
-            }
-        })
+            });
     });
 }
 
 //注册业务
 exports.doRegister = function(req, res) {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields, files) {
-        var username = fields.username;
-        var password = fields.password;
+        var form = new formidable.IncomingForm();
+        form.parse(req, function(err, fields, files) {
+            var username = fields.username;
+            var password = fields.password;
 
-        //首先判断用户名是否已经存在
-        User.find({ "username": username }, function(err, result) {
-            if (err) {
-                //服务器端发生错误
-                res.send("-2");
-            } else {
-                var length = result.length;
-                if (length != 0) {
-                    //用户名已经存在，不能注册
-                    res.send("-1");
-                } else {
-                    //用户名不存在可以注册
-                    //对密码进行md5加密
-                    var password_md5 = md5(md5(password) + "jjq");
-                    //插入新成员
-                    var user = new User({ "username": username, "password": password_md5 });
-                    user.save(function(err) {
-                        if (err) {
-                            //服务器端发生错误
-                            res.send("-2");
+            //首先判断用户名是否已经存在
+            User.find({ "username": username })
+                .exec(function(err, result) {
+                    if (err) {
+                        //服务器端发生错误
+                        res.send("-2");
+                    } else {
+                        var length = result.length;
+                        if (length != 0) {
+                            //用户名已经存在，不能注册
+                            res.send("-1");
                         } else {
-                            // 当注册成功的时候需要设置session记录用户的登录状态
-                            req.session.login = "1";
-                            req.session.username = username;
-                            res.send("1");
+                            //用户名不存在可以注册
+                            //对密码进行md5加密
+                            var password_md5 = md5(md5(password) + "jjq");
+                            //插入新成员
+                            var user = new User({ "username": username, "password": password_md5 });
+                            user.save(function(err) {
+                                if (err) {
+                                    //服务器端发生错误
+                                    res.send("-2");
+                                } else {
+                                    // 当注册成功的时候需要设置session记录用户的登录状态
+                                    req.session.login = "1";
+                                    req.session.username = username;
+                                    res.send("1");
+                                }
+                            });
                         }
-                    });
-                }
-            }
-        })
-    });
-}
-
-
-//退出业务
+                    }
+                })
+        });
+    }
+    //退出业务
 exports.doDrop = function(req, res) {
     req.session.login = null;
     req.session.username = null;
@@ -149,7 +149,7 @@ exports.single = function(req, res) {
 
 //获取帖子列表
 exports.findPublish = function(req, res) {
-    Invitation.find({}, function(err, result) {
+    Invitation.find({}, { limit: 0 }, function(err, result) {
         if (err) {
             res.send('-1');
             return;
@@ -157,4 +157,18 @@ exports.findPublish = function(req, res) {
             res.json({ "invitation": result });
         }
     })
+}
+
+exports.findPublish = function(req, res) {
+    Invitation.find({})
+        .limit(0)
+        .sort('-occupation')
+        .exec(function(err, result) {
+            if (err) {
+                res.send('-1');
+                return;
+            } else {
+                res.json({ "invitation": result });
+            }
+        })
 }

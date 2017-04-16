@@ -21,7 +21,6 @@ app.use(express.static('public')); //设置静态文件夹
 
 app.get("/", router.index); //显示首页
 app.get("/articles", router.articles);
-app.get("/faq", router.faq);
 app.get("/contact", router.contact);
 app.get("/register_login", router.register_login); //显示登录注册页面
 app.get("/findPublish", router.findPublish);
