@@ -154,17 +154,32 @@ exports.findPublish = function(req, res) {
     var limit_num = parseInt(req.query.limit_num || 0);
     var skip_num = limit_num * parseInt(req.query.skip_num || 0) || 0;
     var sort_data = req.query.sort_data || "";
-
-    Invitation.find({ articles })
-        .limit(limit_num)
-        .skip(skip_num)
-        .sort(sort_data)
-        .exec(function(err, result) {
-            if (err) {
-                res.send('-1');
-                return;
-            } else {
-                res.json({ "invitation": result });
-            }
-        })
+    //如果没有填筛选条件
+    if (articles == "") {
+        Invitation.find({})
+            .limit(limit_num)
+            .skip(skip_num)
+            .sort(sort_data)
+            .exec(function(err, result) {
+                if (err) {
+                    res.send('-1');
+                    return;
+                } else {
+                    res.json({ "invitation": result });
+                }
+            })
+    } else {
+        Invitation.find(articles)
+            .limit(limit_num)
+            .skip(skip_num)
+            .sort(sort_data)
+            .exec(function(err, result) {
+                if (err) {
+                    res.send('-1');
+                    return;
+                } else {
+                    res.json({ "invitation": result });
+                }
+            })
+    }
 }
