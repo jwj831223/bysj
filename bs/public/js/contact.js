@@ -15,9 +15,9 @@ $(function() {
 
 
         //确保标题不能为空
-        var tittle = $.trim($("#tittle").val());
-        if (tittle == "") {
-            $("#tittle").focus();
+        var title = $.trim($("#title").val());
+        if (title == "") {
+            $("#title").focus();
             $("#danger").html("标题不能为空");
             $("#danger").fadeIn();
             return;
@@ -41,8 +41,8 @@ $(function() {
 
 
         //确保帖子标题不能大于30字
-        if (tittle.length > 30) {
-            $("#tittle").focus();
+        if (title.length > 30) {
+            $("#title").focus();
             $("#danger").html("标题不能大于30字");
             $("#danger").fadeIn();
             return;
@@ -57,7 +57,7 @@ $(function() {
         }
 
         //一切正常可以进行ajax提交了
-        $.post("/doPublish", { "tittle": tittle, "category": category, "message": message }, function(result) {
+        $.post("/doPublish", { "title": title, "category": category, "message": message }, function(result) {
             if (result == "1") {
                 //发帖成功
                 location.href = "/";

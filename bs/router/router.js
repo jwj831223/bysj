@@ -121,11 +121,11 @@ exports.doPublish = function(req, res) {
     var form = new formidable.IncomingForm();
 
     form.parse(req, function(err, fields, files) {
-        var tittle = fields.tittle;
+        var title = fields.title;
         var category = fields.category;
         var message = fields.message;
 
-        var invitation = new Invitation({ "username": req.session.username, "tittle": tittle, "category": category, "message": message, "date": Date.parse(new Date()) });
+        var invitation = new Invitation({ "username": req.session.username, "title": title, "category": category, "message": message, "date": Date.parse(new Date()) });
         invitation.save(function(err) {
             if (err) {
                 res.send("-1");

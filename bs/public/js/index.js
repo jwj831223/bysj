@@ -27,7 +27,7 @@ $(function() {
         for (var i = 0, length = result.invitation.length; i < length; ++i) {
             var compiled = _.template('\
                 <li class="article-entry standard">\
-                    <h4><a href="single?_id={{=_id}}">{{=tittle}}</a></h4>\
+                    <h4><a href="single?_id={{=_id}}">{{=title}}</a></h4>\
                     <span class="article-meta">{{=date}} in <a href="#" title="View all posts in Server &amp; Database">{{=category}}</a></span>\
                     <span class="like-count">{{=all_praise}}</span>\
                 </li>\
@@ -48,7 +48,7 @@ $(function() {
         for (var i = 0, length = result.invitation.length; i < length; ++i) {
             var compiled = _.template('\
                 <li class="article-entry standard">\
-                    <h4><a href="single?_id={{=_id}}">{{=tittle}}</a></h4>\
+                    <h4><a href="single?_id={{=_id}}">{{=title}}</a></h4>\
                     <span class="article-meta">{{=date}} in <a href="#" title="View all posts in Server &amp; Database">{{=category}}</a></span>\
                     <span class="like-count">{{=all_praise}}</span>\
                 </li>\
