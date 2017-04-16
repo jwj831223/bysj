@@ -15,7 +15,7 @@ $(function() {
     }
     //格式化时间戳
     function get_localTime(nS) {
-        return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+        return new Date(parseInt(nS)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
     }
 
 
