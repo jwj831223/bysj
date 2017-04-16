@@ -1,18 +1,63 @@
 $(function() {
 
+    //得到类别
+    function get_category(category) {
+        switch (category) {
+            case "1":
+                return "机械";
+            case "2":
+                return "制造";
+            case "3":
+                return "自动化";
+            default:
+                return "其他";
+        }
+    }
+    //格式化时间戳
+    function get_localTime(nS) {
+        return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+    }
 
 
-    $.get("/findPublish", function(result) {
+    //得到帖子
+    $.get("/findPublish", { "limit_num": 5 }, function(result) {
+        if (result == "-1") {
+            return;
+        }
         for (var i = 0, length = result.invitation.length; i < length; ++i) {
             var compiled = _.template('\
                 <li class="article-entry standard">\
-                    <h4><a href="single.html">{{=tittle}}</a></h4>\
+                    <h4><a href="single?_id={{=_id}}">{{=tittle}}</a></h4>\
                     <span class="article-meta">{{=date}} in <a href="#" title="View all posts in Server &amp; Database">{{=category}}</a></span>\
-                    <span class="like-count">{{=category}}</span>\
+                    <span class="like-count">{{=all_praise}}</span>\
                 </li>\
             ');
+            result.invitation[i].category = get_category(result.invitation[i].category);
+            result.invitation[i].date = get_localTime(result.invitation[i].date);
+
             var compiled = compiled(result.invitation[i]);
-            $(".featured").append(compiled);
+            $(".latest_invitation").append(compiled);
+        }
+    })
+
+    //得到热门帖子
+    $.get("/findPublish", { "limit_num": 5, sort_data: { all_praise: -1 } }, function(result) {
+        if (result == "-1") {
+            return;
+        }
+        for (var i = 0, length = result.invitation.length; i < length; ++i) {
+            var compiled = _.template('\
+                <li class="article-entry standard">\
+                    <h4><a href="single?_id={{=_id}}">{{=tittle}}</a></h4>\
+                    <span class="article-meta">{{=date}} in <a href="#" title="View all posts in Server &amp; Database">{{=category}}</a></span>\
+                    <span class="like-count">{{=all_praise}}</span>\
+                </li>\
+            ');
+            result.invitation[i].category = get_category(result.invitation[i].category);
+            result.invitation[i].date = get_localTime(result.invitation[i].date);
+
+            var compiled = compiled(result.invitation[i]);
+            $(".hot_invitation").append(compiled);
         }
     })
 })
