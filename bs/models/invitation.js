@@ -6,6 +6,7 @@ var invitationSchema = mongoose.Schema({
     category: String,
     message: String,
     all_praise: { type: Number, default: 0 },
+    reply_num: { type: Number, default: 0 },
     date: Number,
     reply: [{
         name: String,
