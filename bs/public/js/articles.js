@@ -24,6 +24,11 @@ $(function() {
         if (r != null) return unescape(r[2]);
         return null;
     }
+    //切断内容主体部分
+    function message_cut(message, length) {
+        return message.substring(0, length);
+    }
+
     var category = parseInt(get_query("category")) || 0;
     var skip_num = parseInt(get_query("skip_num")) || 0;
     $.get("/findPublish", { "articles": category ? { "category": category } : {}, "limit": 10, "skip_num": skip_num }, function(result) {
@@ -33,6 +38,9 @@ $(function() {
             return;
         }
         for (var i = 0, length = result2.invitation.length; i < length; ++i) {
+
+            var message_length = result2.invitation[i].message.length;
+            console.log(message_length);
             var compiled = _.template('\
                     <article class="format-standard type-post hentry clearfix">\
                         <header class="clearfix">\
@@ -46,11 +54,12 @@ $(function() {
                                 <span class="like-count">{{=all_praise}}</span>\
                             </div>\
                         </header>\
-                        <p>{{=message}}....<a class="readmore-link" href="" style="color:blue">查看详情</a></p>\
+                        <p>' + '{{=message_part}}' + (message_length > 80 ? "......" : "") + (message_length > 80 ? '<a class="readmore-link" href="" style="color:blue">查看完整内容</a>' : "") + '</p>\
                     </article>\
             ');
             result2.invitation[i].category_formit = get_category(result2.invitation[i].category);
             result2.invitation[i].date = get_localTime(result2.invitation[i].date);
+            result2.invitation[i].message_part = message_cut(result2.invitation[i].message, 80);
             var compiled = compiled(result2.invitation[i]);
             $("#articles").append(compiled);
         }

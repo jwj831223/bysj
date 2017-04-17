@@ -60,7 +60,18 @@
                             <input type="text" name="name" id="title" class="required input-xlarge" value="" title="* Please provide your name"<%if(login!="1"){%>disabled="disabled"<%}%>>
                         </div>
 
-
+                         <div class="span2">
+                             <label for="reason">类别 <span>*</span></label>
+                          </div>
+                          <div class="span6">
+                             <select <%if(login!="1"){%>disabled="disabled"<%}%> id="category">
+                                 <option value="0">请选择</option>
+                                 <option value="1">机械</option>
+                                 <option value="2">制造</option>
+                                 <option value="3">自动化</option>
+                                 <option value="4">其他</option>
+                             </select>
+                          </div>
 
 
                         <div class="span2" style="position:relative">
