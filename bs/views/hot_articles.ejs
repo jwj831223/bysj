@@ -1,25 +1,50 @@
 <section class="widget">
-    <h3 class="title">特色论文</h3>
-    <ul class="articles">
-        <li class="article-entry standard">
-            <h4><a href="single.html">题目题目题目</a></h4>
-            <span class="article-meta">25 9, 2016  <a href="#" title="View all posts in Server &amp; Database">类别类别</a></span>
-            <span class="like-count">66</span>
-        </li>
-        <li class="article-entry standard">
-            <h4><a href="single.html">题目题目题目</a></h4>
-            <span class="article-meta">25 9, 2016  <a href="#" title="View all posts in Server &amp; Database">类别类别</a></span>
-            <span class="like-count">66</span>
-        </li>
-        <li class="article-entry standard">
-            <h4><a href="single.html">题目题目题目</a></h4>
-            <span class="article-meta">25 9, 2016  <a href="#" title="View all posts in Server &amp; Database">类别类别</a></span>
-            <span class="like-count">66</span>
-        </li>
-        <li class="article-entry standard">
-            <h4><a href="single.html">题目题目题目</a></h4>
-            <span class="article-meta">25 9, 2016  <a href="#" title="View all posts in Server &amp; Database">类别类别</a></span>
-            <span class="like-count">66</span>
-        </li>
+    <h3 class="title">热门帖子</h3>
+    <ul class="articles" id="hot_articles">
+
     </ul>
 </section>
+
+<script type="text/javascript">
+    $(function(){
+        //得到类别
+        function get_category(category) {
+            switch (category) {
+                case "1":
+                    return "机械";
+                case "2":
+                    return "制造";
+                case "3":
+                    return "自动化";
+                default:
+                    return "其他";
+            }
+        }
+        //格式化时间戳
+        function get_localTime(nS) {
+            return new Date(parseInt(nS)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+        }
+        $.get("/findPublish", { "limit_num": 5, sort_data: { all_praise: -1 } }, function(result) {
+            var result2 = JSON.stringify(result);
+            result2 = JSON.parse(result2);
+            if (result2 == "-1") {
+                return;
+            }
+            for (var i = 0, length = result2.invitation.length; i < length; ++i) {
+                var compiled = _.template('\
+                    <li class="article-entry standard">\
+                        <h4><a href="single.html">{{=title}}</a></h4>\
+                        <span class="article-meta">{{=date}}<a href="#" title="View all posts in Server &amp; Database">{{=category_formit}}</a></span>\
+                        <span class="like-count">{{=all_praise}}</span>\
+                    </li>\
+                ');
+                result2.invitation[i].category_formit = get_category(result2.invitation[i].category);
+                result2.invitation[i].date = get_localTime(result2.invitation[i].date);
+
+                var compiled = compiled(result2.invitation[i]);
+                $("#hot_articles").append(compiled);
+            }
+        })
+    })
+    //得到热门帖子
+</script>

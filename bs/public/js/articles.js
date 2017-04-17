@@ -46,7 +46,7 @@ $(function() {
                                 <span class="like-count">{{=all_praise}}</span>\
                             </div>\
                         </header>\
-                        <p>{{message}}<a class="readmore-link" href="">Read more</a></p>\
+                        <p>{{=message}}....<a class="readmore-link" href="" style="color:blue">查看详情</a></p>\
                     </article>\
             ');
             result2.invitation[i].category_formit = get_category(result2.invitation[i].category);
