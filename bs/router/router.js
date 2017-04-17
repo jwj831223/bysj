@@ -149,7 +149,6 @@ exports.single = function(req, res) {
 
 //获取帖子列表
 exports.findPublish = function(req, res) {
-
     var articles = req.query.articles ? req.query.articles : "";
     var limit_num = parseInt(req.query.limit_num || 0);
     var skip_num = limit_num * parseInt(req.query.skip_num || 0) || 0;

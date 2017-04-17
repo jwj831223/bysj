@@ -24,13 +24,15 @@ app.get("/articles", router.articles);
 app.get("/contact", router.contact);
 app.get("/register_login", router.register_login); //显示登录注册页面
 app.get("/findPublish", router.findPublish);
-
 app.get("/single", router.single); //帖子详情页
+
 
 app.post("/doLogin", router.doLogin); //登录业务
 app.post("/doRegister", router.doRegister); //注册业务
 app.post("/doDrop", router.doDrop); //退出业务
-app.post("/doPublish", router.doPublish); //帖子发表业务
+app.post("/doPublish", router.doPublish); //帖子发表业
+
+
 
 
 app.listen(3000);
