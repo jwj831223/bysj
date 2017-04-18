@@ -65,7 +65,42 @@ $(function() {
     })
 
     //底部的分页功能
-    $.get("/get_invitation_num", { condition: { category: 3 } }, function(result) {
-        console.log(result);
+    $.get("/get_invitation_num", {}, function(result) {
+        var page_num = Math.ceil(result / 2.0);
+
+        for (var i = 1, length = page_num; i < length + 1; ++i) {
+            var template = '<a href="#" class="btn" id="btn' + i + '">' + i + '</a>';
+            $("#pagination").append(template);
+        }
+        $("#btn1").addClass("active");
+        if (page_num > 1) {
+            var template = '<a href="#" class="btn" id="next">下一页>></a>';
+            $("#pagination").append(template);
+        }
+
+        //给页数按钮绑定事件
+        for (var i = 1; i <= page_num; ++i) {
+            (function(i) {
+                $("#btn" + i).click(function() {
+                    if (i != 1) {
+                        $("#pre").remove();
+                        $("#next").remove();
+                        var pre = '<a href="#" class="btn" id="pre">上一页 <<</a>';
+                        $("#pagination").prepend(pre);
+                        var next = '<a href="#" class="btn" id="next">下一页 >></a>';
+                        $("#pagination").append(next);
+                    }
+                    if (i == 1) {
+                        $("#pre").remove();
+                        var next = '<a href="#" class="btn" id="next">下一页 >></a>';
+                        $("#pagination").append(next);
+                    }
+                    if (i == page_num) {
+                        $("#next").remove();
+                    }
+                })
+            })(i);
+
+        }
     })
 })
