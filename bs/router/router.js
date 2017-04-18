@@ -182,3 +182,11 @@ exports.findPublish = function(req, res) {
             })
     }
 }
+
+//得到帖子的总数
+exports.get_invitation_num = function(req, res) {
+    var condition = req.query.condition ? req.query.condition : {};
+    Invitation.get_invitation_num(condition, function(result) {
+        res.send(result);
+    })
+}

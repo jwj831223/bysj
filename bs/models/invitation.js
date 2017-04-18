@@ -21,9 +21,9 @@ invitationSchema.statics.get_invitation_num = function(condition, callback) {
     this.find(condition)
         .exec(function(err, result) {
             if (err) {
-                return (-1);
+                callback("-1");
             } else {
-                return (result.length);
+                callback(result.length.toString());
             }
         })
 }

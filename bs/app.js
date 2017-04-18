@@ -25,6 +25,7 @@ app.get("/contact", router.contact);
 app.get("/register_login", router.register_login); //显示登录注册页面
 app.get("/findPublish", router.findPublish);
 app.get("/single", router.single); //帖子详情页
+app.get("/get_invitation_num", router.get_invitation_num); //得到帖子的总条数
 
 
 app.post("/doLogin", router.doLogin); //登录业务

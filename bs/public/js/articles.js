@@ -40,7 +40,6 @@ $(function() {
         for (var i = 0, length = result2.invitation.length; i < length; ++i) {
 
             var message_length = result2.invitation[i].message.length;
-            console.log(message_length);
             var compiled = _.template('\
                     <article class="format-standard type-post hentry clearfix">\
                         <header class="clearfix">\
@@ -63,5 +62,10 @@ $(function() {
             var compiled = compiled(result2.invitation[i]);
             $("#articles").append(compiled);
         }
+    })
+
+    //底部的分页功能
+    $.get("/get_invitation_num", { condition: { category: 3 } }, function(result) {
+        console.log(result);
     })
 })
