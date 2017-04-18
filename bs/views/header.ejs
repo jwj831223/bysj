@@ -1,54 +1,58 @@
-    <!-- Start of Header -->
-    <div class="header-wrapper">
-        <header>
-            <div class="container">
+<!-- Start of Header -->
+<div class="header-wrapper">
+    <header>
+        <div class="container">
 
 
-                <div class="logo-container">
-                    <!-- Website Logo -->
-                    <a href="/" title="Knowledge Base Theme">
-                        <img src="images/logo.png" alt="Knowledge Base Theme">
-                    </a>
-                </div>
-
-
-                <!-- Start of Main Navigation -->
-                <nav class="main-nav">
-                    <div class="menu-top-menu-container">
-                        <ul id="menu-top-menu" class="clearfix">
-                            <li id="<%if(present_active=='index'){%>current-menu-item<%}%>"><a href="/">首页</a></li>
-                            <li id="<%if(present_active=='articles'){%>current-menu-item<%}%>"><a href="/articles">文章列表</a></li>
-                            <li id="<%if(present_active=='contact'){%>current-menu-item<%}%>"><a href="/contact">发帖交流</a></li>
-                            <% if(login != "1"){%>
-                                <li id="<%if(present_active=='register_login'){%>current-menu-item<%}%>"><a href="/register_login">注册/登录</a></li>
-                            <%} else{%>
-                                <li> <a>欢迎：</a><a> <%= username%></a></li>
-                                <li id="drop"><a style="cursor: pointer">退出</a></li>
-                            <%}%>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- End of Main Navigation -->
-
+            <div class="logo-container">
+                <!-- Website Logo -->
+                <a href="/" title="Knowledge Base Theme">
+                    <img src="images/logo.png" alt="Knowledge Base Theme">
+                </a>
             </div>
-        </header>
-    </div>
-    <!-- End of Header -->
 
-    <!-- 退出业务 -->
-    <script type="text/javascript">
-        $("#drop").click(function(){
-            $.post("/doDrop",function(result){
-                if(result=="1"){
-                    sessionStorage.setItem("address",""); 
-                    location.href = "/register_login";
-                }
-            })
+
+            <!-- Start of Main Navigation -->
+            <nav class="main-nav">
+                <div class="menu-top-menu-container">
+                    <ul id="menu-top-menu" class="clearfix ">
+                        <li id="<%if(present_active=='index'){%>current-menu-item<%}%>"><a href="/">首页</a></li>
+                        <li id="<%if(present_active=='articles'){%>current-menu-item<%}%>"><a href="/articles">文章列表</a></li>
+                        <li id="<%if(present_active=='contact'){%>current-menu-item<%}%>"><a href="/contact">发帖交流</a></li>
+                        <% if(login != "1"){%>
+                            <li id="<%if(present_active=='register_login'){%>current-menu-item<%}%>"><a href="/register_login">注册/登录</a></li>
+                            <%} else{%>
+                                <li> <a>欢迎：</a>
+                                    <a>
+                                        <%= username%>
+                                    </a>
+                                </li>
+                                <li id="drop"><a style="cursor: pointer">退出</a></li>
+                                <%}%>
+                    </ul>
+                </div>
+            </nav>
+            <!-- End of Main Navigation -->
+
+        </div>
+    </header>
+</div>
+<!-- End of Header -->
+
+<!-- 退出业务 -->
+<script type="text/javascript">
+    $("#drop").click(function() {
+        $.post("/doDrop", function(result) {
+            if (result == "1") {
+                sessionStorage.setItem("address", "");
+                location.href = "/register_login";
+            }
         })
-    </script>
+    })
+</script>
 
-    <style>
-        #current-menu-item a{
-            color:#fff;
-        }
-    </style>
+<style>
+    #current-menu-item a {
+        color: #fff;
+    }
+</style>
