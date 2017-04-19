@@ -28,10 +28,12 @@ $(function() {
     function message_cut(message, length) {
         return message.substring(0, length);
     }
+    //每页显示多少条
+    var limit_num = 5;
 
     var category = parseInt(get_query("category")) || 0;
     var skip_num = parseInt(get_query("skip_num")) || 0;
-    $.get("/findPublish", { "articles": category ? { "category": category } : {}, "limit": 10, "skip_num": skip_num }, function(result) {
+    $.get("/findPublish", { "articles": category ? { "category": category } : {}, "limit_num": limit_num, "skip_num": skip_num }, function(result) {
         var result2 = JSON.stringify(result);
         result2 = JSON.parse(result2);
         if (result2 == "-1") {
@@ -65,42 +67,44 @@ $(function() {
     })
 
     //底部的分页功能
-    $.get("/get_invitation_num", {}, function(result) {
-        var page_num = Math.ceil(result / 2.0);
-
+    $.get("/get_invitation_num", { "condition": category ? { "category": category } : {} }, function(result) {
+        var page_num = Math.ceil(result / parseFloat(limit_num));
         for (var i = 1, length = page_num; i < length + 1; ++i) {
-            var template = '<a href="#" class="btn" id="btn' + i + '">' + i + '</a>';
+            var template = '<a href="articles?category=' + category + '&skip_num=' + (i - 1) + '" class="btn" id="btn' + i + '">' + i + '</a>';
             $("#pagination").append(template);
         }
-        $("#btn1").addClass("active");
         if (page_num > 1) {
             var template = '<a href="#" class="btn" id="next">下一页>></a>';
             $("#pagination").append(template);
         }
 
         //给页数按钮绑定事件
-        for (var i = 1; i <= page_num; ++i) {
-            (function(i) {
-                $("#btn" + i).click(function() {
-                    if (i != 1) {
-                        $("#pre").remove();
-                        $("#next").remove();
-                        var pre = '<a href="#" class="btn" id="pre">上一页 <<</a>';
-                        $("#pagination").prepend(pre);
-                        var next = '<a href="#" class="btn" id="next">下一页 >></a>';
-                        $("#pagination").append(next);
-                    }
-                    if (i == 1) {
-                        $("#pre").remove();
-                        var next = '<a href="#" class="btn" id="next">下一页 >></a>';
-                        $("#pagination").append(next);
-                    }
-                    if (i == page_num) {
-                        $("#next").remove();
-                    }
-                })
-            })(i);
+        // for (var i = 1; i <= page_num; ++i) {
+        //     (function(i) {
+        //         $("#btn" + i).click(function() {
+        //             $("#pagination a").removeClass("active");
+        //             $(this).addClass("active");
+        //             if (i != 1) {
+        //                 $("#pre").remove();
+        //                 $("#next").remove();
+        //                 var pre = '<a href="#" class="btn" id="pre">上一页 <<</a>';
+        //                 $("#pagination").prepend(pre);
+        //                 var next = '<a href="#" class="btn" id="next">下一页 >></a>';
+        //                 $("#pagination").append(next);
+        //             }
+        //             if (i == 1) {
+        //                 $("#pre").remove();
+        //                 var next = '<a href="#" class="btn" id="next">下一页 >></a>';
+        //                 $("#pagination").append(next);
+        //             }
+        //             if (i == page_num) {
+        //                 $("#next").remove();
+        //             }
+        //         })
+        //     })(i);
 
-        }
+        // }
+
+        //给低栏绑定按钮绑定事件，控制分页按钮的颜色，并且控制何时出现上一页下一页按钮
     })
 })
