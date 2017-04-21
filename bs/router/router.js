@@ -118,6 +118,11 @@ exports.doDrop = function(req, res) {
 
 //发帖业务
 exports.doPublish = function(req, res) {
+    //阻止假的post请求
+    if (req.session.login != "1") {
+        res.send("-1");
+        return;
+    }
     var form = new formidable.IncomingForm();
 
     form.parse(req, function(err, fields, files) {
