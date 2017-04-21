@@ -29,7 +29,7 @@ $(function() {
         return message.substring(0, length);
     }
     //每页显示多少条
-    var limit_num = 1;
+    var limit_num = 5;
 
     var category = parseInt(get_query("category")) || 0;
     var skip_num = parseInt(get_query("skip_num")) || 0;
@@ -69,12 +69,39 @@ $(function() {
     //底部的分页功能
     $.get("/get_invitation_num", { "condition": category ? { "category": category } : {} }, function(result) {
         var page_num = Math.ceil(result / parseFloat(limit_num));
+
+        //最多同时显示7页
+        var max_show_num = 7;
+
         //如果页数大于1
         if (page_num > 1) {
-            for (var i = 1, length = page_num; i < length + 1; ++i) {
-                var template = '<a href="articles?category=' + category + '&skip_num=' + (i - 1) + '" class="btn" id="btn' + i + '">' + i + '</a>';
-                $("#pagination").append(template);
+            // 显示当前页
+            var template = '<a href="articles?category=' + category + '&skip_num=' + skip_num + '" class="btn" id="btn' + (skip_num + 1) + '">' + (skip_num + 1) + '</a>';
+            $("#pagination").append(template);
+            //根据当前所在的页数，向前遍历3页
+            var pre_num = 0;
+            while (((skip_num - pre_num) != 0) && (pre_num != parseInt(max_show_num / 2))) {
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (skip_num - pre_num - 1) + '" class="btn" id="btn' + (skip_num - pre_num) + '">' + (skip_num - pre_num) + '</a>';
+                $("#pagination").prepend(template);
+                ++pre_num;
             }
+            //向后遍历3页
+            var next_num = 0;
+            while (((skip_num + next_num) != page_num - 1) && (next_num != parseInt(max_show_num - pre_num - 1))) {
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (skip_num + next_num + 1) + '" class="btn" id="btn' + skip_num + next_num + 2 + '">' + (skip_num + next_num + 2) + '</a>';
+                $("#pagination").append(template);
+                ++next_num;
+            }
+            //如果两次遍历都没有遍历完成max_show_num页，则则需要再次补全到max_show_num页
+            if ((pre_num + next_num + 1) < max_show_num) {
+                //向前便利
+                while (((skip_num - pre_num) != 0) && (pre_num != parseInt(max_show_num - next_num - 1))) {
+                    var template = '<a href="articles?category=' + category + '&skip_num=' + (skip_num - pre_num - 1) + '" class="btn" id="btn' + (skip_num - pre_num) + '">' + (skip_num - pre_num) + '</a>';
+                    $("#pagination").prepend(template);
+                    ++pre_num;
+                }
+            }
+
             // 控制分页按钮的颜色，并且控制何时出现上一页下一页按钮
             $("#btn" + (skip_num + 1)).addClass("active");
             //如果点击的是第一页，让分页栏显示尾页和下一页
