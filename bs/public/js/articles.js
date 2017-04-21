@@ -34,11 +34,11 @@ $(function() {
     var category = parseInt(get_query("category")) || 0;
     var skip_num = parseInt(get_query("skip_num")) || 0;
     $.get("/findPublish", { "articles": category ? { "category": category } : {}, "limit_num": limit_num, "skip_num": skip_num }, function(result) {
-        var result2 = JSON.stringify(result);
-        result2 = JSON.parse(result2);
-        if (result2 == "-1") {
+        if (result == "-1") {
             return;
         }
+        var result2 = JSON.stringify(result);
+        result2 = JSON.parse(result2);
         for (var i = 0, length = result2.invitation.length; i < length; ++i) {
 
             var message_length = result2.invitation[i].message.length;
