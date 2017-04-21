@@ -29,7 +29,7 @@ $(function() {
         return message.substring(0, length);
     }
     //每页显示多少条
-    var limit_num = 5;
+    var limit_num = 1;
 
     var category = parseInt(get_query("category")) || 0;
     var skip_num = parseInt(get_query("skip_num")) || 0;
@@ -69,43 +69,45 @@ $(function() {
     //底部的分页功能
     $.get("/get_invitation_num", { "condition": category ? { "category": category } : {} }, function(result) {
         var page_num = Math.ceil(result / parseFloat(limit_num));
-        for (var i = 1, length = page_num; i < length + 1; ++i) {
-            var template = '<a href="articles?category=' + category + '&skip_num=' + (i - 1) + '" class="btn" id="btn' + i + '">' + i + '</a>';
-            $("#pagination").append(template);
-        }
+        //如果页数大于1
         if (page_num > 1) {
-            var template = '<a href="#" class="btn" id="next">下一页>></a>';
+            for (var i = 1, length = page_num; i < length + 1; ++i) {
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (i - 1) + '" class="btn" id="btn' + i + '">' + i + '</a>';
+                $("#pagination").append(template);
+            }
+            // 控制分页按钮的颜色，并且控制何时出现上一页下一页按钮
+            $("#btn" + (skip_num + 1)).addClass("active");
+            //如果点击的是第一页，让分页栏显示尾页和下一页
+            if (skip_num == 0) {
+                //显示下一页
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (skip_num + 1) + '" class="btn" id="next">下一页>></a>';
+                $("#pagination").append(template);
+                // 显示尾页
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (page_num - 1) + '" class="btn" id="end">尾页</a>';
+                $("#pagination").append(template);
+
+            } else if ((skip_num + 1) == page_num) { //如果点击的是最后一页
+                //显示不是尾页
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (skip_num - 1) + '" class="btn" id="pre"><<上一页</a>';
+                $("#pagination").prepend(template);
+                var template = '<a href="articles?category=' + category + '&skip_num=0" class="btn" id="start">首页</a>';
+                $("#pagination").prepend(template);
+            } else { //如果是中间页
+                //显示下一页
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (skip_num + 1) + '" class="btn" id="next">下一页>></a>';
+                $("#pagination").append(template);
+                // 显示尾页
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (page_num - 1) + '" class="btn" id="end">尾页</a>';
+                $("#pagination").append(template);
+                //显示不是尾页
+                var template = '<a href="articles?category=' + category + '&skip_num=' + (skip_num - 1) + '" class="btn" id="pre"><<上一页</a>';
+                $("#pagination").prepend(template);
+                var template = '<a href="articles?category=' + category + '&skip_num=0" class="btn" id="start">首页</a>';
+                $("#pagination").prepend(template);
+            }
+        } else { //如果只有一页
+            var template = '<a class="btn active">1</a>';
             $("#pagination").append(template);
         }
-
-        //给页数按钮绑定事件
-        // for (var i = 1; i <= page_num; ++i) {
-        //     (function(i) {
-        //         $("#btn" + i).click(function() {
-        //             $("#pagination a").removeClass("active");
-        //             $(this).addClass("active");
-        //             if (i != 1) {
-        //                 $("#pre").remove();
-        //                 $("#next").remove();
-        //                 var pre = '<a href="#" class="btn" id="pre">上一页 <<</a>';
-        //                 $("#pagination").prepend(pre);
-        //                 var next = '<a href="#" class="btn" id="next">下一页 >></a>';
-        //                 $("#pagination").append(next);
-        //             }
-        //             if (i == 1) {
-        //                 $("#pre").remove();
-        //                 var next = '<a href="#" class="btn" id="next">下一页 >></a>';
-        //                 $("#pagination").append(next);
-        //             }
-        //             if (i == page_num) {
-        //                 $("#next").remove();
-        //             }
-        //         })
-        //     })(i);
-
-        // }
-
-        // 控制分页按钮的颜色，并且控制何时出现上一页下一页按钮
-        $("#btn" + (skip_num + 1)).addClass("active");
     })
 })
