@@ -23,7 +23,8 @@ app.get("/", router.index); //显示首页
 app.get("/articles", router.articles);
 app.get("/contact", router.contact);
 app.get("/register_login", router.register_login); //显示登录注册页面
-app.get("/findPublish", router.findPublish);
+app.get("/findPublish", router.findPublish); //得到所有帖子的详情信息
+app.get("/findPublishOne", router.findPublishOne); //得到指定帖子的详情信息
 app.get("/single", router.single); //帖子详情页
 app.get("/get_invitation_num", router.get_invitation_num); //得到帖子的总条数
 

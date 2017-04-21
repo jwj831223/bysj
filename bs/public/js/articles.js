@@ -46,7 +46,7 @@ $(function() {
                     <article class="format-standard type-post hentry clearfix">\
                         <header class="clearfix">\
                             <h3 class="post-title">\
-                                <a href="single.html">{{=title}}</a>\
+                                <a href="single?_id={{=_id}}">{{=title}}</a>\
                             </h3>\
                             <div class="post-meta clearfix">\
                                 <span class="date">{{=date}}</span>\
@@ -55,7 +55,7 @@ $(function() {
                                 <span class="like-count">{{=all_praise}}</span>\
                             </div>\
                         </header>\
-                        <p>' + '{{=message_part}}' + (message_length > 80 ? "......" : "") + (message_length > 80 ? '<a class="readmore-link" href="" style="color:blue">查看完整内容</a>' : "") + '</p>\
+                        <p>' + '{{=message_part}}' + (message_length > 80 ? "......" : "") + (message_length > 80 ? '<a class="readmore-link" href="single?_id={{=_id}}" style="color:blue">查看完整内容</a>' : "") + '</p>\
                     </article>\
             ');
             result2.invitation[i].category_formit = get_category(result2.invitation[i].category);

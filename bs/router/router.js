@@ -183,6 +183,34 @@ exports.findPublish = function(req, res) {
     }
 }
 
+
+//获取指定帖子列表
+exports.findPublishOne = function(req, res) {
+    var articles = req.query.articles ? req.query.articles : "";
+    //如果没有填筛选条件
+    if (articles == "") {
+        Invitation.find({})
+            .exec(function(err, result) {
+                if (err) {
+                    res.send('-1');
+                    return;
+                } else {
+                    res.json(result);
+                }
+            })
+    } else {
+        Invitation.find(articles)
+            .exec(function(err, result) {
+                if (err) {
+                    res.send('-1');
+                    return;
+                } else {
+                    res.json(result);
+                }
+            })
+    }
+}
+
 //得到帖子的总数
 exports.get_invitation_num = function(req, res) {
     var condition = req.query.condition ? req.query.condition : {};
