@@ -35,104 +35,48 @@
 
     <% include header.ejs%>
 
-    <!-- Start of Search Wrapper -->
-    <div class="search-area-wrapper">
-        <div class="search-area container">
-            <h3 class="search-header">有问题吗？</h3>
-            <p class="search-tag-line">如果你有任何问题，你可以在下面输入您的问题</p>
+        <!-- Start of Search Wrapper -->
+        <div class="search-area-wrapper">
+            <div class="search-area container">
+                <h3 class="search-header">有问题吗？</h3>
+                <p class="search-tag-line">如果你有任何问题，你可以在下面输入您的问题</p>
 
-            <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
-                <input class="search-term required" type="text" id="s" name="s" placeholder="请输入搜索字词" title="* Please enter a search term!" />
-                <input class="search-btn" type="submit" value="查询" />
-                <div id="search-error-container"></div>
-            </form>
+                <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
+                    <input class="search-term required" type="text" id="s" name="s" placeholder="请输入搜索字词" title="* Please enter a search term!" />
+                    <input class="search-btn" type="submit" value="查询" />
+                    <div id="search-error-container"></div>
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- End of Search Wrapper -->
+        <!-- End of Search Wrapper -->
 
-    <!-- Start of Page Container -->
-    <div class="page-container">
-        <div class="container">
-            <div class="row">
+        <!-- Start of Page Container -->
+        <div class="page-container">
+            <div class="container">
+                <div class="row">
 
-                <!-- start of page content -->
-                <div class="span8 main-listing" id="articles">
-          
-                </div>
-                <!-- end of page content -->
-                <!-- start of sidebar -->
-                <aside class="span4 page-sidebar">
+                    <!-- start of page content -->
+                    <div class="span8 main-listing" id="articles">
 
-                    <% include hot_articles.ejs%>
+                    </div>
+                    <!-- end of page content -->
+                    <!-- start of sidebar -->
+                    <aside class="span4 page-sidebar">
 
-                    <% include classify.ejs%>
-                </aside>
-                <!-- end of sidebar -->
-                <div class="span8 main-listing">
-                    <div id="pagination">
+                        <% include hot_articles.ejs%>
+
+                            <% include classify.ejs%>
+                    </aside>
+                    <!-- end of sidebar -->
+                    <div class="span8 main-listing">
+                        <div id="pagination">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!--<a href="#" class="btn">下一页 »</a>\
-            <a href="#" class="btn active">1</a>\
-            <a href="#" class="btn">2</a>\
-            <a href="#" class="btn">3</a>\
-            <a href="#" class="btn">上一页 »</a>\'-->
-    <!-- End of Page Container -->
-
-    <!-- Footer Bottom -->
-    <div id="footer-bottom-wrapper">
-        <div id="footer-bottom" class="container">
-            <div class="row">
-                <div class="span6">
-                    <p class="copyright">
-                        Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-                    </p>
-                </div>
-                <div class="span6">
-                    <!-- Social Navigation -->
-                    <ul class="social-nav clearfix">
-                        <li class="linkedin">
-                            <a target="_blank" href="#"></a>
-                        </li>
-                        <li class="stumble">
-                            <a target="_blank" href="#"></a>
-                        </li>
-                        <li class="google">
-                            <a target="_blank" href="#"></a>
-                        </li>
-                        <li class="deviantart">
-                            <a target="_blank" href="#"></a>
-                        </li>
-                        <li class="flickr">
-                            <a target="_blank" href="#"></a>
-                        </li>
-                        <li class="skype">
-                            <a target="_blank" href="skype:#?call"></a>
-                        </li>
-                        <li class="rss">
-                            <a target="_blank" href="#"></a>
-                        </li>
-                        <li class="twitter">
-                            <a target="_blank" href="#"></a>
-                        </li>
-                        <li class="facebook">
-                            <a target="_blank" href="#"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of Footer Bottom -->
-
-    </footer>
-    <!-- End of Footer -->
-
-    <a href="#top" id="scroll-top"></a>
+        <!-- End of Page Container -->
+        <% include footer.ejs%>
 </body>
 
 </html>

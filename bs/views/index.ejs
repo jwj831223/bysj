@@ -24,7 +24,7 @@
                 <script src="js/html5.js"></script></script>
                 <![endif]-->
 
-    <script type="text/javascript" src="js/jquery.js"></script>            
+    <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/underscore.js"></script>
 </head>
@@ -33,163 +33,63 @@
 
     <% include header.ejs%>
 
-    <!-- Start of Search Wrapper -->
-    <div class="search-area-wrapper">
-        <div class="search-area container">
-            <h3 class="search-header">有问题吗？</h3>
-            <p class="search-tag-line">如果你有任何问题，你可以在下面输入您的问题</p>
+        <!-- Start of Search Wrapper -->
+        <div class="search-area-wrapper">
+            <div class="search-area container">
+                <h3 class="search-header">有问题吗？</h3>
+                <p class="search-tag-line">如果你有任何问题，你可以在下面输入您的问题</p>
 
-            <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
-                <input class="search-term required" type="text" id="s" name="s" placeholder="请输入搜索字词" title="* Please enter a search term!" />
-                <input class="search-btn" type="submit" value="查询" />
-                <div id="search-error-container"></div>
-            </form>
-        </div>
-    </div>
-    <!-- End of Search Wrapper -->
-
-    <!-- Start of Page Container -->
-    <div class="page-container">
-        <div class="container">
-            <div class="row">
-
-                <!-- start of page content -->
-                <div class="span8 page-content">
-
-                    <!-- Basic Home Page Template -->
-                    <div class="row separator">
-                        <section class="span4 articles-list">
-                            <h3>热门帖子</h3>
-                            <ul class="articles featured hot_invitation">
-                            </ul>     
-                        </section>
-
-
-                        <section class="span4 articles-list">
-                            <h3>最新帖子</h3>
-                            <ul class="articles latest_invitation">
-                            </ul>  
-                        </section>
-                    </div>
-                </div>
-                <!-- end of page content -->
-
-
-                <!-- start of sidebar -->
-                <aside class="span4 page-sidebar">
-                    <% include classify.ejs%>
-                </aside>
-                <!-- end of sidebar -->
+                <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
+                    <input class="search-term required" type="text" id="s" name="s" placeholder="请输入搜索字词" title="* Please enter a search term!" />
+                    <input class="search-btn" type="submit" value="查询" />
+                    <div id="search-error-container"></div>
+                </form>
             </div>
         </div>
-    </div>
-    <!-- End of Page Container -->
+        <!-- End of Search Wrapper -->
 
-    <!-- Start of Footer -->
-    <footer id="footer-wrapper">
-        <div id="footer" class="container">
-            <div class="row">
-
-                <div class="span3">
-                    <section class="widget">
-                        <h3 class="title">How it works</h3>
-                        <div class="textwidget">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-                            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-                        </div>
-                    </section>
-                </div>
-
-                <div class="span3">
-                    <section class="widget">
-                        <h3 class="title">Categories</h3>
-                        <ul>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet,">Designing in WordPress</a></li>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet,">Server &amp; Database</a></li>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet, ">Theme Development</a></li>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet,">Website Dev</a></li>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet,">WordPress for Beginners</a></li>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet, ">WordPress Plugins</a></li>
-                        </ul>
-                    </section>
-                </div>
-
-                <div class="span3">
-                    <section class="widget">
-                        <h3 class="title">Latest Tweets</h3>
-                        <div id="twitter_update_list">
-                            <ul>
-                                <li>No Tweets loaded !</li>
-                            </ul>
-                        </div>
-                    </section>
-                </div>
-
-                <div class="span3">
-                    <section class="widget">
-                        <h3 class="title">Flickr Photos</h3>
-                        <div class="flickr-photos" id="basicuse">
-                        </div>
-                    </section>
-                </div>
-
-            </div>
-        </div>
-        <!-- end of #footer -->
-
-        <!-- Footer Bottom -->
-        <div id="footer-bottom-wrapper">
-            <div id="footer-bottom" class="container">
+        <!-- Start of Page Container -->
+        <div class="page-container">
+            <div class="container">
                 <div class="row">
-                    <div class="span6">
-                        <p class="copyright">
-                            Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-                        </p>
+
+                    <!-- start of page content -->
+                    <div class="span8 page-content">
+
+                        <!-- Basic Home Page Template -->
+                        <div class="row separator">
+                            <section class="span4 articles-list">
+                                <h3>热门帖子</h3>
+                                <ul class="articles featured hot_invitation">
+                                </ul>
+                            </section>
+
+
+                            <section class="span4 articles-list">
+                                <h3>最新帖子</h3>
+                                <ul class="articles latest_invitation">
+                                </ul>
+                            </section>
+                        </div>
                     </div>
-                    <div class="span6">
-                        <!-- Social Navigation -->
-                        <ul class="social-nav clearfix">
-                            <li class="linkedin">
-                                <a target="_blank" href="#"></a>
-                            </li>
-                            <li class="stumble">
-                                <a target="_blank" href="#"></a>
-                            </li>
-                            <li class="google">
-                                <a target="_blank" href="#"></a>
-                            </li>
-                            <li class="deviantart">
-                                <a target="_blank" href="#"></a>
-                            </li>
-                            <li class="flickr">
-                                <a target="_blank" href="#"></a>
-                            </li>
-                            <li class="skype">
-                                <a target="_blank" href="skype:#?call"></a>
-                            </li>
-                            <li class="rss">
-                                <a target="_blank" href="#"></a>
-                            </li>
-                            <li class="twitter">
-                                <a target="_blank" href="#"></a>
-                            </li>
-                            <li class="facebook">
-                                <a target="_blank" href="#"></a>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- end of page content -->
+
+
+                    <!-- start of sidebar -->
+                    <aside class="span4 page-sidebar">
+                        <% include classify.ejs%>
+                    </aside>
+                    <!-- end of sidebar -->
                 </div>
             </div>
         </div>
-        <!-- End of Footer Bottom -->
+        <!-- End of Page Container -->
 
-    </footer>
-    <!-- End of Footer -->
+        <% include footer.ejs%>
 
-    <a href="#top" id="scroll-top"></a>
+            <a href="#top" id="scroll-top"></a>
 
-  
+
 </body>
 
 </html>

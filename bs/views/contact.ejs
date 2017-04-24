@@ -19,10 +19,10 @@
     <link rel='stylesheet' id='main-css-css' href='css/main5152.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='custom-css-css' href='css/custom5152.html?ver=1.0' type='text/css' media='all' />
 
-        <script type="text/javascript" src="/js/jquery.js"></script>
-        <script type="text/javascript" src="/js/contact.js"></script>
-        <script type="text/javascript" src="/js/underscore.js"></script>
-        <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/contact.js"></script>
+    <script type="text/javascript" src="/js/underscore.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
                 <script src="js/html5.js"></script></script>
@@ -34,81 +34,79 @@
 
     <% include header.ejs%>
 
-    <!-- Start of Page Container -->
-    <div class="page-container">
-        <div class="container">
-            <div class="row">
+        <!-- Start of Page Container -->
+        <div class="page-container">
+            <div class="container">
+                <div class="row">
 
-                <!-- start of page content -->
-                <div class="span8 page-content">
+                    <!-- start of page content -->
+                    <div class="span8 page-content">
 
-                    <article class="type-page hentry clearfix">
-                        <h1 class="post-title">
-                            <a href="#">发帖交流</a>
-                        </h1>
-                        <hr>
-                        <p>如果你有什么想跟大家交流的，那就发帖吧！</p>
-                    </article>
+                        <article class="type-page hentry clearfix">
+                            <h1 class="post-title">
+                                <a href="#">发帖交流</a>
+                            </h1>
+                            <hr>
+                            <p>如果你有什么想跟大家交流的，那就发帖吧！</p>
+                        </article>
 
 
-                    <form id="contact-form" class="row" action="http://inspirythemes.com/templates/knowledgebase-html/contact_form_handler.php" method="post">
+                        <form id="contact-form" class="row" action="http://inspirythemes.com/templates/knowledgebase-html/contact_form_handler.php" method="post">
 
-                        <div class="span2">
-                            <label for="name">文章主题 <span>*</span> </label>
-                        </div>
-                        <div class="span6">
-                            <input type="text" name="name" id="title" class="required input-xlarge" value="" title="* Please provide your name"<%if(login!="1"){%>disabled="disabled"<%}%>>
-                        </div>
+                            <div class="span2">
+                                <label for="name">文章主题 <span>*</span> </label>
+                            </div>
+                            <div class="span6">
+                                <input type="text" name="name" id="title" class="required input-xlarge" value="" title="* Please provide your name" <%if(login!="1" ){%>disabled="disabled"
+                                <%}%>>
+                            </div>
 
-                         <div class="span2">
-                             <label for="reason">类别 <span>*</span></label>
-                          </div>
-                          <div class="span6">
-                             <select <%if(login!="1"){%>disabled="disabled"<%}%> id="category">
+                            <div class="span2">
+                                <label for="reason">类别 <span>*</span></label>
+                            </div>
+                            <div class="span6">
+                                <select <%if(login!="1" ){%>disabled="disabled"<%}%> id="category">
                                  <option value="0">请选择</option>
                                  <option value="1">机械</option>
                                  <option value="2">制造</option>
                                  <option value="3">自动化</option>
                                  <option value="4">其他</option>
                              </select>
-                          </div>
+                            </div>
 
 
-                        <div class="span2" style="position:relative">
-                            <label for="message">内容 <span>*</span> </label>
-                            <%if(login!="1"){%>
-                                <input type="button" name="submit" value="请登录" class="btn btn-inverse" id="doLogin" style="background:blue;position:absolute;top: 210%;left:243%">
-                            <%}%>
-                        </div>
-                        <div class="span6">
-                            <textarea name="message" id="message" class="required span6" rows="6" title="* 请输入帖子内容" <%if(login!="1"){%>disabled="disabled"<%}%>></textarea>
-                        </div>
-                        <div class="span6 offset2 bm30">
-                            <div class="alert alert-danger" id="danger" role="alert" style="text-align:center;margin-bottom: 0px; display:none"></div>
-                        </div>
-                        <div class="span6 offset2 bm30">
-                            <%if(login=="1"){%>
-                                <input type="button" name="submit" value="发表" class="btn btn-inverse" id="publish" style="back-ground:green">
-                            <%}%>
-                        </div>
+                            <div class="span2" style="position:relative">
+                                <label for="message">内容 <span>*</span> </label>
+                                <%if(login!="1"){%>
+                                    <input type="button" name="submit" value="请登录" class="btn btn-inverse" id="doLogin" style="background:blue;position:absolute;top: 210%;left:243%">
+                                    <%}%>
+                            </div>
+                            <div class="span6">
+                                <textarea name="message" id="message" class="required span6" rows="6" title="* 请输入帖子内容" <%if(login!="1" ){%>disabled="disabled"<%}%>></textarea>
+                            </div>
+                            <div class="span6 offset2 bm30">
+                                <div class="alert alert-danger" id="danger" role="alert" style="text-align:center;margin-bottom: 0px; display:none"></div>
+                            </div>
+                            <div class="span6 offset2 bm30">
+                                <%if(login=="1"){%>
+                                    <input type="button" name="submit" value="发表" class="btn btn-inverse" id="publish" style="back-ground:green">
+                                    <%}%>
+                            </div>
 
 
 
-                    </form>
+                        </form>
+                    </div>
+
+                    <aside class="span4 page-sidebar">
+                        <% include hot_articles.ejs%>
+                    </aside>
                 </div>
-
-                <aside class="span4 page-sidebar">
-                    <% include hot_articles.ejs%>
-                </aside>
             </div>
         </div>
-    </div>
+        <% include footer.ejs%>
 
 
-
-    <a href="#top" id="scroll-top"></a>
-
-    
 </body>
 
 </html>
